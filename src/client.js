@@ -17,5 +17,5 @@ export const createProduct = ({ name, description, pictureUrl, price }) => post(
 )
 
 export const createCart = () => post('/cart', {});
-export const updateCart = (cartId, cart) => post(`/cart/${cartId}`, { cart });
+export const updateCart = (cartId, newItemId) => get(`/cart/${cartId}/${newItemId}`); // cart is array of item id-s
 export const getCart = (cartId) => get(`/cart/${cartId}`);

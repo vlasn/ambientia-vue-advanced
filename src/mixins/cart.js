@@ -1,4 +1,4 @@
-import { createCart, getCart } from '../client';
+import { createCart, getCart, updateCart } from '../client';
 /*
 {
     id: string,
@@ -30,6 +30,9 @@ const cart = {
                         this.id = cartId
                     })
             }
+        },
+        addItemToCart(itemId) {
+            updateCart(this.id, itemId)
         }
     },
     mounted() {

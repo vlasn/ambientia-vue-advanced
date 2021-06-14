@@ -11,7 +11,7 @@
       </router-link>
     </div>
     {{ message }}
-    <button @click="printMessage">Click me</button>
+    <button @click="addItem">Click me</button>
   </div>
 </template>
 
@@ -27,8 +27,8 @@ export default {
       }
     },
     methods: {
-      printMessage() {
-        console.log('I am inside the component')
+      addItem() {
+        this.addItemToCart('a3aa5fb7-595d-4184-85d2-ddb561ad59d6')
       }
     }
 }
