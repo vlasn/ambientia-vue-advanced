@@ -20,20 +20,14 @@
 </template>
 
 <script>
-import cart from '../mixins/cart';
-
 export default {
     name: 'Header',
-    mixins: [cart],
     data() {
       return {
         message: 'I am a header'
       }
     },
     methods: {
-      addItem() {
-        this.addItemToCart('a3aa5fb7-595d-4184-85d2-ddb561ad59d6')
-      }
     }
 }
 </script>

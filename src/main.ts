@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import App from './App.vue'
 import router from './views';
 
-import MainLayout from './layouts/MainLayout';
+import MainLayout from './layouts/MainLayout.vue';
 
 Vue.config.productionTip = false
 

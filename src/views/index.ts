@@ -1,19 +1,13 @@
 import VueRouter from 'vue-router';
-import Landing from './Landing';
-import Store from './Store';
-import Product from './Product';
-import Cart from './Cart';
-import Checkout from './Checkout';
-import Login from './Login';
-import Account from './Account';
+import Landing from './Landing.vue';
+import Store from './Store.vue';
+import Product from './Product.vue';
+import Cart from './Cart.vue';
+import Checkout from './Checkout.vue';
+import Login from './Login.vue';
+import Account from './Account.vue';
 
 const storeBaseRoute = 'pood';
-
-const globalState = {
-    loggedIn: false
-};
-
-window.globalState = globalState;
 
 const routes = [
     {path: '/landing', component: Landing},
@@ -33,9 +27,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.meta?.requiresAuthentication) {
-        if (!globalState.loggedIn) {
-            return next({ name: 'login' });
-        }
+        return next({ name: 'login' });
     }
     next()
 });
