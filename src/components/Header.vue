@@ -10,12 +10,27 @@
         Home
       </router-link>
     </div>
+    {{ message }}
+    <button @click="printMessage">Click me</button>
   </div>
 </template>
 
 <script>
+import cart from '../mixins/cart';
+
 export default {
-    name: 'Header'
+    name: 'Header',
+    mixins: [cart],
+    data() {
+      return {
+        message: 'I am a header'
+      }
+    },
+    methods: {
+      printMessage() {
+        console.log('I am inside the component')
+      }
+    }
 }
 </script>
 
