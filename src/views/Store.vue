@@ -16,7 +16,7 @@
 
 <script>
 import ProductListing from "../components/ProductListing";
-import { getProducts } from '../client';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "Store",
@@ -25,11 +25,11 @@ export default {
   },
   data() {
     return {
-      searchTerm: "",
-      products: []
+      searchTerm: ""
     };
   },
   methods: {
+    ...mapActions('products', ['fetchProducts']),
     onInput(event) {
       this.searchTerm = event.target.value;
     },
@@ -38,6 +38,7 @@ export default {
     },
   },
   computed: {
+    ...mapState('products', ['products']),
     productList() {
       return this.products.map((product) => ({
         name: product.name,
@@ -55,10 +56,7 @@ export default {
     },
   },
   mounted() {
-      getProducts()
-        .then(data => {
-            this.products = data;
-        })
+    this.fetchProducts()
   }
 };
 </script>
