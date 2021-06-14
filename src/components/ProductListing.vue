@@ -1,38 +1,32 @@
 <template>
     <div class="ProductListing" @click='navigateToProduct'>
         <div class="ProductImage">
-            <img :src="pictureUrl" />
+            <img :src="product.pictureUrl" />
         </div>
         <div class="ProductName">
-            {{name}}
+            {{product.name}}
         </div>
     </div>
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue';
+import { Product } from '../types/product.types';
 
-export default {
+export default Vue.extend({
     name: 'ProductListing',
     props: {
-        name: {
-            type: String,
-            required: true
-        },
-        id: {
-            type: String,
-            required: true
-        },
-        pictureUrl: {
-            type: String,
+        product: {
+            type: Object as () => Product,
             required: true
         }
     },
     methods: {
-        navigateToProduct() {
-            this.$router.push({ name: 'product', params: { productId: this.id }})
+        navigateToProduct(): void {
+            this.$router.push({ name: 'product', params: { productId: this.product.id }})
         }
     }
-}
+})
 </script>
 
 <style>

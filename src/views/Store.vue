@@ -7,7 +7,7 @@
       <ProductListing
         v-for="product in filteredProducts"
         :key="product.id"
-        v-bind="product"
+        :product="product"
       />
     </div>
     <div>total: {{ productCount }}</div>
