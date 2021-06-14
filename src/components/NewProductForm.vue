@@ -18,13 +18,21 @@
     </form>
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue';
 import BeautifulButton from './BeautifulButton.vue';
 
-export default {
+interface INewProductFormData {
+    productName: string;
+    description: string;
+    pictureUrl: string;
+    lastSubmittedIndex: number;
+}
+
+export default Vue.extend({
     components: { BeautifulButton },
     name: 'NewProductForm',
-    data() {
+    data(): INewProductFormData {
         return {
             productName: "",
             description: "",
@@ -43,7 +51,12 @@ export default {
         }
     },
     computed: {
-        className() {
+        isValid(): true {
+            console.log(this.productName)
+            return true;
+        },
+        
+        className(): Record<string,boolean> {
             return {
                 NewProductForm: true,
                 form: false,
@@ -58,7 +71,7 @@ export default {
             default: false
         }
     }
-}
+});
 </script>
 
 <style>

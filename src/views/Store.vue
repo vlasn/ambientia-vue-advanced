@@ -14,43 +14,52 @@
   </div>
 </template>
 
-<script>
-import ProductListing from "../components/ProductListing";
+<script lang='ts'>
+import Vue from 'vue';
+import ProductListing from "../components/ProductListing.vue";
 import { getProducts } from '../client';
+import { Product } from '../types/product.types';
 
-export default {
+interface IStoreData {
+  searchTerm: string;
+  products: Array<Product>;
+}
+
+export default Vue.extend({
   name: "Store",
   components: {
     ProductListing,
   },
-  data() {
+  data(): IStoreData {
     return {
       searchTerm: "",
       products: []
     };
   },
   methods: {
-    onInput(event) {
-      this.searchTerm = event.target.value;
+    onInput(event: Event): void {
+      console.log(this.searchTerm);
+      const target = event.target as HTMLInputElement;
+      this.searchTerm = target.value;
     },
-    onNewProduct(data) {
-      this.products.push(data);
+    onNewProduct(): void {
+      // this.products.push(data);
     },
   },
   computed: {
-    productList() {
+    productList(): Product[] {
       return this.products.map((product) => ({
         name: product.name,
         id: product.id,
         pictureUrl: product.pictureUrl,
       }));
     },
-    filteredProducts() {
+    filteredProducts(): Product[] {
       return this.productList.filter((product) => {
         return product.name.toLowerCase().search(this.searchTerm.toLowerCase()) > -1;
       });
     },
-    productCount() {
+    productCount(): number {
       return this.products.length;
     },
   },
@@ -60,7 +69,7 @@ export default {
             this.products = data;
         })
   }
-};
+});
 </script>
 
 <style>

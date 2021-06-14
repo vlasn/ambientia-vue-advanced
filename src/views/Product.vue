@@ -17,19 +17,26 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue';
 import { getProduct } from '../client';
+import { DetailedProduct } from '../types/product.types';
 
-export default {
+interface IProductData {
+    product: DetailedProduct | null;
+    loading: boolean;
+}
+
+export default Vue.extend({
     name: 'Product',
     computed: {
         productId() {
             return this.$route.params.productId
         }
     },
-    data() {
+    data(): IProductData {
         return {
-            product: {},
+            product: null,
             loading: true
         }
     },
@@ -41,7 +48,7 @@ export default {
             });
     }
 
-}
+});
 </script>
 
 <style>

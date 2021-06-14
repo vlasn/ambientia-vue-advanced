@@ -9,7 +9,7 @@ const post = (url: string, payload: any) => fetch(
     { method: 'post', body: payload }
 ).then(res => res.json());
 
-export const getProducts: () => Promise<Product> = () => get('/products?all=1');
+export const getProducts: () => Promise<Product[]> = () => get('/products?all=1');
 export const getProduct: (id: string) => Promise<DetailedProduct> = (id) => get(`/products/${id}`);
 
 type TCreateProduct = Pick<DetailedProduct, 'name'|'description'|'pictureUrl'|'price'>

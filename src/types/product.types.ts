@@ -9,3 +9,5 @@ export interface DetailedProduct extends Product {
     description: string;
     price: number;
 }
+
+export type CreateProduct = Omit<DetailedProduct, 'id'>

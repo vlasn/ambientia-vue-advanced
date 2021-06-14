@@ -1,4 +1,4 @@
-import VueRouter from 'vue-router';
+import VueRouter, { RouteConfig } from 'vue-router';
 import Landing from './Landing.vue';
 import Store from './Store.vue';
 import Product from './Product.vue';
@@ -9,7 +9,7 @@ import Account from './Account.vue';
 
 const storeBaseRoute = 'pood';
 
-const routes = [
+const routes: Array<RouteConfig> = [
     {path: '/landing', component: Landing},
     {path: '/logi-sisse', name: 'login', component: Login},
     {path: '/konto', name: 'account', component: Account, meta: { requiresAuthentication: true }},
