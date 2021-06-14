@@ -13,7 +13,7 @@
             {{product.description}}
         </p>
         <span>Price: {{product.price}}€</span>
-        <BeautifulButton @click="addToCart">
+        <BeautifulButton @click="addToCart" v-if="!isAlreadyInCart">
             Add to cart
         </BeautifulButton>
     </div>
@@ -22,15 +22,19 @@
 
 <script>
 import { getProduct } from '../client';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import BeautifulButton from '../components/BeautifulButton.vue';
 
 export default {
   components: { BeautifulButton },
     name: 'Product',
     computed: {
+        ...mapState('cart', ['items']),
         productId() {
             return this.$route.params.productId
+        },
+        isAlreadyInCart() {
+            return this.items.some(item => item.id === this.productId)
         }
     },
     data() {

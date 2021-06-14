@@ -31,13 +31,13 @@ const cartStore = {
             let cartId = localStorage.getItem('cartId');
             if (cartId === null) {
                 createCart()
-                    .then(({id, cart}) => { // mutate state
+                    .then(({id, cart}) => {
                         commit(SET_CART, {id: id, items: cart})
                         localStorage.setItem('cartId', id)
                     })
             } else {
                 getCart(cartId)
-                    .then(items => { // mutate state
+                    .then(items => {
                         commit(SET_CART, {id: cartId, items})
                     })
             }
@@ -50,6 +50,9 @@ const cartStore = {
             console.log(updatedItems);
             commit(SET_ITEMS, updatedItems);
             commit(SET_LOADING, false)
+        },
+        isItemInCart({ state }, productId) {
+            return state.items.some(item => item.id === productId)
         }
     }
 }
