@@ -25,7 +25,7 @@ export default {
 <style>
 .MainLayout {
     display: grid;
-    grid-template-rows: 50px 1fr auto;
+    grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
     height: 100%;
 }

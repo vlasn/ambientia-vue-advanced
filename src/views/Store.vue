@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="">
-      <input :value="message" @input="onInput" />
+    <div class="Filter">
+      <input :value="searchTerm" @input="onInput" placeholder='Filter results'/>
     </div>
-    <div class="products">
+    <div class="Products">
       <ProductListing
         v-for="product in filteredProducts"
         :key="product.id"
@@ -25,14 +25,13 @@ export default {
   },
   data() {
     return {
-      message: "",
+      searchTerm: "",
       products: []
     };
   },
   methods: {
     onInput(event) {
-      console.log(event);
-      this.message = event.target.value;
+      this.searchTerm = event.target.value;
     },
     onNewProduct(data) {
       this.products.push(data);
@@ -48,7 +47,7 @@ export default {
     },
     filteredProducts() {
       return this.productList.filter((product) => {
-        return product.name.startsWith(this.message);
+        return product.name.toLowerCase().search(this.searchTerm.toLowerCase()) > -1;
       });
     },
     productCount() {
@@ -65,4 +64,11 @@ export default {
 </script>
 
 <style>
+  .Products {
+    margin: 20px auto;
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
 </style>

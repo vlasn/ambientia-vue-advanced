@@ -4,6 +4,9 @@
         Loading...
     </div>
     <div v-else>
+        <router-link to='/store'>
+            Go back
+        </router-link>
         <h3>{{product.name}}</h3>
         <img :src="product.pictureUrl"/>
         <p>
