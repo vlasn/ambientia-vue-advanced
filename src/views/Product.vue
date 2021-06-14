@@ -4,7 +4,7 @@
         Loading...
     </div>
     <div v-else>
-        <router-link to='/store'>
+        <router-link :to="{name: 'store'}">
             Go back
         </router-link>
         <h3>{{product.name}}</h3>

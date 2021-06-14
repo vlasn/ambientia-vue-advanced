@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         navigateToProduct() {
-            this.$router.push({ path: `store/${this.id}` })
+            this.$router.push({ name: 'product', params: { productId: this.id }})
         }
     }
 }

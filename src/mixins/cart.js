@@ -10,7 +10,8 @@ const cart = {
     data() {
        return {
            cart: null,
-           id: ''
+           id: '',
+           filterTerm: ''
        }
     },
     methods: {

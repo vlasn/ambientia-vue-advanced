@@ -1,16 +1,20 @@
 <template>
   <div class='Header'>
     <div class="store-link">
-      <router-link to='/store' class="store-link">
+      <router-link :to="{name: 'store'}" class="store-link">
         Store
       </router-link>
     </div>
     <div class="store-link">
-      <router-link to='/' class="store-link">
+      <router-link to='/landing' class="store-link">
         Home
       </router-link>
     </div>
-    {{ message }}
+    <div class="store-link">
+      <router-link :to="{name: 'account'}" class="store-link">
+        Account
+      </router-link>
+    </div>
     <button @click="addItem">Click me</button>
   </div>
 </template>
