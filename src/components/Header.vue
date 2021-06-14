@@ -15,24 +15,33 @@
         Account
       </router-link>
     </div>
+    <div class="store-link">
+      <router-link :to="{name: 'cart'}" class="store-link">
+        Cart ({{ numberOfItemsInCart }})
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-import cart from '../mixins/cart';
+
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'Header',
-    mixins: [cart],
     data() {
       return {
         message: 'I am a header'
       }
     },
+    computed: {
+      ...mapGetters('cart', ['numberOfItemsInCart'])
+    },
     methods: {
-      addItem() {
-        this.addItemToCart('a3aa5fb7-595d-4184-85d2-ddb561ad59d6')
-      }
+      ...mapActions('cart', ['scaffoldCart'])
+    },
+    mounted() {
+      this.scaffoldCart();
     }
 }
 </script>

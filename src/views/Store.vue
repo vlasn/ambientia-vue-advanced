@@ -39,15 +39,8 @@ export default {
   },
   computed: {
     ...mapState('products', ['products']),
-    productList() {
-      return this.products.map((product) => ({
-        name: product.name,
-        id: product.id,
-        pictureUrl: product.pictureUrl,
-      }));
-    },
     filteredProducts() {
-      return this.productList.filter((product) => {
+      return this.products.filter((product) => {
         return product.name.toLowerCase().search(this.searchTerm.toLowerCase()) > -1;
       });
     },
