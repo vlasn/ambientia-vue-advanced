@@ -15,7 +15,6 @@
         Account
       </router-link>
     </div>
-    <button @click="addItem">Click me</button>
   </div>
 </template>
 
